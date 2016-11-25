@@ -7,23 +7,35 @@
 //
 
 import UIKit
+import Moltin
 
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    var objects = [Any]()
+    var objects = [AnyObject]()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
-
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
-        self.navigationItem.rightBarButtonItem = addButton
+        
+        //Instanciate the Singleton for the particular Store in Moltin
+        Moltin.sharedInstance().setPublicId("UoL7Uopanf6rvTmBi68qSGrWEYwRKJzOlz4fvY9KMN")
+        
         if let split = self.splitViewController {
             let controllers = split.viewControllers
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
+        }
+        
+        //Make a call to retrieve the store products
+        Moltin.sharedInstance().product.listing(withParameters: nil, success: { (responseDictionary) in
+            
+            self.objects = responseDictionary?["result"] as! [AnyObject]
+            
+            //tell the tableview to reload its data
+            self.tableView.reloadData()
+            
+            }) { (responseDictionary, error) in
+                print("Something went wrong")
         }
     }
 
@@ -48,9 +60,9 @@ class MasterViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let object = objects[indexPath.row] as! NSDate
+                //let object = objects[indexPath.row] as! NSDate
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = object
+                //controller.detailItem = object
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -70,8 +82,9 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        let object = objects[indexPath.row] as! NSDate
-        cell.textLabel!.text = object.description
+        let object = objects[indexPath.row] as! [String:AnyObject]
+        cell.textLabel!.text = object["title"] as? String
+        
         return cell
     }
 
