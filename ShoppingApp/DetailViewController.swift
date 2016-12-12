@@ -46,7 +46,7 @@ class DetailViewController: UIViewController {
                 if (images.firstObject != nil) {
                     imageUrl = (images.firstObject as! NSDictionary).value(forKeyPath: "url.https") as! String
                 }
-                print("Product image URL: \(imageUrl)")
+                //print("Product image URL: \(imageUrl)")
                 
                 
                 if let url = URL(string: imageUrl) {

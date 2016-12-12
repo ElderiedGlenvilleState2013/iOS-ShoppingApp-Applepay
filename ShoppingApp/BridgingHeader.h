@@ -10,6 +10,8 @@
 #define BridgingHeader_h
 
 #import <Moltin/Moltin.h>
+#import <Stripe/Stripe.h>
+#import <Stripe/Stripe+ApplePay.h>
 
 
 #endif /* BridgingHeader_h */
