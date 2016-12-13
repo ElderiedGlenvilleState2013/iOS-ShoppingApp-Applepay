@@ -233,7 +233,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j5S-6v-Nx1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-857" y="784"/>
+            <point key="canvasLocation" x="-914" y="614"/>
         </scene>
         <!--ShoppingSplitViewController-->
         <scene sceneID="Nki-YV-4Qg">

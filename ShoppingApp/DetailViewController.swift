@@ -30,7 +30,7 @@ class DetailViewController: UIViewController {
             //Set the PriceLabel
             let productPrice = detail.value(forKeyPath: "price.data.formatted.without_tax") as? String
             if let price = productPrice{
-                self.detailPriceLabel?.text = price
+                self.detailPriceLabel?.text = convertToUSD(originalValue: price)
             }
             
             //Set the DescriptionLabel

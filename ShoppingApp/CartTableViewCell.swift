@@ -30,7 +30,8 @@ class CartTableViewCell: UITableViewCell {
         
         cartCellTitle?.text = itemDict.value(forKey: "title") as? String
         
-        cartCellPrice?.text = itemDict.value(forKeyPath: "totals.post_discount.formatted.with_tax") as? String
+        let price = itemDict.value(forKeyPath: "totals.post_discount.formatted.with_tax") as? String
+        cartCellPrice?.text = convertToUSD(originalValue: price!)
         
         if let qty:NSNumber = itemDict.value(forKeyPath: "quantity") as? NSNumber {
             _ = "Qty. \(qty.intValue)"

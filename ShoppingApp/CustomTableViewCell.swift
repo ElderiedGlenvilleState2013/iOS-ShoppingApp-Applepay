@@ -29,7 +29,10 @@ class CustomTableViewCell: UITableViewCell {
         // Setup the cell with information provided in productDict.
         cellTitle?.text = productDict.value(forKey: "title") as? String
         
-        cellPrice?.text = productDict.value(forKeyPath: "price.data.formatted.with_tax") as? String
+        let price = productDict.value(forKeyPath: "price.data.formatted.with_tax") as? String
+        cellPrice?.text = convertToUSD(originalValue: price!)
+        
+        //cellPrice?.text = productDict.value(forKeyPath: "price.data.formatted.with_tax") as? String
         
         //set the image for the product
         var imageUrl = ""
