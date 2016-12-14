@@ -140,6 +140,7 @@
 				TargetAttributes = {
 					1ACED92F1DE8E0C600C531C7 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = E4558K7554;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -356,6 +357,7 @@
 			baseConfigurationReference = A7A77480E4B9329830DF2F11 /* Pods-ShoppingApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = E4558K7554;
 				INFOPLIST_FILE = ShoppingApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.ucsc.ShoppingApp;
@@ -370,6 +372,7 @@
 			baseConfigurationReference = 4AF4FBC41A24AC73DA407026 /* Pods-ShoppingApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = E4558K7554;
 				INFOPLIST_FILE = ShoppingApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.ucsc.ShoppingApp;
